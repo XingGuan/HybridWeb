@@ -9,5 +9,4 @@ document.addEventListener("DOMContentLoaded", () => {
   //获取到的 fontSize 不允许超过我们定义的最大值
   fontSize = fontSize > MAX_FONT_SIZE ? MAX_FONT_SIZE : fontSize;
   //定义根元素(html)fontSize的大小(也就是1rem的大小)
-  html.style.fontSize = fontSize + "px";
 });

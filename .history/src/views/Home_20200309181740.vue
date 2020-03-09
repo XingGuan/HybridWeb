@@ -11,7 +11,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@css/style.scss";
+@import "@css/style";
 .test {
   font-size: px2rem(16);
 }

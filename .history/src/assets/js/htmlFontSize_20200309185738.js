@@ -10,4 +10,5 @@ document.addEventListener("DOMContentLoaded", () => {
   fontSize = fontSize > MAX_FONT_SIZE ? MAX_FONT_SIZE : fontSize;
   //定义根元素(html)fontSize的大小(也就是1rem的大小)
   html.style.fontSize = fontSize + "px";
+  console.log("777777", fontSize);
 });

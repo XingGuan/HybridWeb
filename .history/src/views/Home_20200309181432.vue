@@ -10,9 +10,4 @@ export default {
   components: {}
 };
 </script>
-<style lang="scss" scoped>
-@import "@css/style.scss";
-.test {
-  font-size: px2rem(16);
-}
-</style>
+<style lang="scss" scoped></style>
