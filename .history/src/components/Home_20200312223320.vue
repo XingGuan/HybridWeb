@@ -76,11 +76,6 @@ export default {
       margin-top: px2rem(-8);
       border-top-left-radius: px2rem(8);
       border-top-right-radius: px2rem(8);
-      img {
-        display: inline-block;
-        width: 33.33%;
-        z-index: 2;
-      }
     }
   }
 }

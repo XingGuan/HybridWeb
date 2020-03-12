@@ -7,16 +7,7 @@
         :height="swiperheight"
       ></my-swiper>
       <!-- 520活动组件 -->
-      <activity>
-        <div class="activity-520">
-          <img
-            v-for="(item, index) in activityData"
-            :key="index"
-            :src="item.icon"
-            alt="活动"
-          />
-        </div>
-      </activity>
+      <activity></activity>
     </div>
   </div>
 </template>
@@ -32,8 +23,7 @@ export default {
   data() {
     return {
       swiperData: [],
-      swiperheight: "184px",
-      activityData: []
+      swiperheight: "184px"
     };
   },
   created() {
@@ -50,38 +40,17 @@ export default {
         .catch(err => {
           console.log(err);
         });
-      this.$http
-        .get("/activitys")
-        .then(data => {
-          this.activityData = data.list;
-        })
-        .catch(err => {
-          console.log(err);
-        });
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-@import "@css/style.scss";
 .home {
   width: 100%;
   height: 100%;
-  background-color: $bgColor;
   &-content {
     height: 100%;
-    .activity-520 {
-      background: burlywood;
-      margin-top: px2rem(-8);
-      border-top-left-radius: px2rem(8);
-      border-top-right-radius: px2rem(8);
-      img {
-        display: inline-block;
-        width: 33.33%;
-        z-index: 2;
-      }
-    }
   }
 }
 </style>

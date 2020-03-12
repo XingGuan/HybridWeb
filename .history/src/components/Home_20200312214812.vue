@@ -64,24 +64,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@css/style.scss";
 .home {
   width: 100%;
   height: 100%;
-  background-color: $bgColor;
   &-content {
     height: 100%;
-    .activity-520 {
-      background: burlywood;
-      margin-top: px2rem(-8);
-      border-top-left-radius: px2rem(8);
-      border-top-right-radius: px2rem(8);
-      img {
-        display: inline-block;
-        width: 33.33%;
-        z-index: 2;
-      }
-    }
   }
 }
 </style>
