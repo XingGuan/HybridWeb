@@ -17,8 +17,6 @@
           />
         </div>
       </activity>
-      <!-- 功能选项 -->
-      <mode-options></mode-options>
     </div>
   </div>
 </template>
@@ -26,12 +24,10 @@
 <script>
 import MySwiper from "@c/swiper/MySwiper.vue";
 import Activity from "@c/currency/Activity.vue";
-import ModeOptions from "@c/currency/ModeOptions.vue";
 export default {
   components: {
     MySwiper,
-    Activity,
-    ModeOptions
+    Activity
   },
   data() {
     return {
@@ -46,30 +42,23 @@ export default {
   methods: {
     //获取数据
     initData() {
-      // this.$http
-      //   .get("/swiper")
-      //   .then(data => {
-      //     this.swiperData = data.list;
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
-      // this.$http
-      //   .get("/activitys")
-      //   .then(data => {
-      //     this.activityData = data.list;
-      //   })
-      //   .catch(err => {
-      //     console.log(err);
-      //   });
-      //axios同时发送多个请求（并行）
-      this.$http.all([
-        this.$http.get("/swiper"),
-        this.$http.get("activitys"),
-      ]).then(this.$http.spread((swiperData,activityData)=>{
-          this.swiperData=swiperData.list;
-          this.activityData=activityData.list;
-      }))
+      this.$http
+        .get("/swiper")
+        .then(data => {
+          this.swiperData = data.list;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      this.$http
+        .get("/activitys")
+        .then(data => {
+          this.activityData = data.list;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+        //axios同时发送多个并行请求
     }
   }
 };
