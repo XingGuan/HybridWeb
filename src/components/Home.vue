@@ -19,6 +19,8 @@
       </activity>
       <!-- 功能选项 -->
       <mode-options></mode-options>
+      <!-- 秒杀组件 -->
+      <seconds :dataSource="secondData"></seconds>
     </div>
   </div>
 </template>
@@ -27,17 +29,20 @@
 import MySwiper from "@c/swiper/MySwiper.vue";
 import Activity from "@c/currency/Activity.vue";
 import ModeOptions from "@c/currency/ModeOptions.vue";
+import Seconds from "@c/seconds/Seconds.vue";
 export default {
   components: {
     MySwiper,
     Activity,
-    ModeOptions
+    ModeOptions,
+    Seconds
   },
   data() {
     return {
       swiperData: [],
       swiperheight: "184px",
-      activityData: []
+      activityData: [],
+      secondData:[]
     };
   },
   created() {
@@ -66,9 +71,12 @@ export default {
       this.$http.all([
         this.$http.get("/swiper"),
         this.$http.get("activitys"),
-      ]).then(this.$http.spread((swiperData,activityData)=>{
+        this.$http.get("/seconds"),
+      ]).then(this.$http.spread((swiperData,activityData,secondData)=>{
           this.swiperData=swiperData.list;
           this.activityData=activityData.list;
+          this.secondData=secondData.list;
+          console.log(this.secondData);
       }))
     }
   }
