@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import "@js/htmlFontSize";
 import "@js/axios.config.js";
+import "@js/filter.js";
 
 Vue.config.productionTip = false;
 
