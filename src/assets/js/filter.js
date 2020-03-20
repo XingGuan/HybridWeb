@@ -6,7 +6,7 @@ import Vue from 'vue';
 Vue.filter('priceValue',function(value){
     //如果文本不存在返回空字符
     if(!value){
-        return '';
+        return '0.00';
     }
     //文本转化为float
     let result=parseFloat(value);
@@ -22,7 +22,7 @@ Vue.filter('priceValue',function(value){
  */
 Vue.filter('filterTime',function(value){
     if(!value){
-        return ''
+        return '';
     }
     // value 不是时：分：秒的时间格式
     if(value.indexOf(":")===-1){

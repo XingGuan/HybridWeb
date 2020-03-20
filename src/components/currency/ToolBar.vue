@@ -1,5 +1,5 @@
 <template>
-  <div class="tool-bar">
+  <div class="tool-bar" :class="{'iphonex-bottom': $store.state.isIphoneX}">
     <!-- tab按钮,需要有一个数据源,通过这个数据源去驱动视图 -->
     <div
       class="tool-bar-item"
@@ -77,6 +77,13 @@ export default {
     onChangeFragment(item, index) {
       this.selectItemIndex = index;
       this.$emit("onChangeFragment", item.componentName);
+    },
+    /**
+     * 指定切换的tab页
+     */
+    pushFragment(index){
+      // 调用onChangeFragment 切换对应的tab
+      this.onChangeFragment(this.toolBarData[index],index);
     }
   }
 };

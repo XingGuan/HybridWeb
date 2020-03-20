@@ -71,7 +71,10 @@ export default {
         onItemClick(item){
             this.$router.push({
                 //与路由注册文件里router名称一样
-                name:'goodsList'
+                name:'goodsList',
+                params:{
+                    routerType:'push'
+                }
             })
         }
     }

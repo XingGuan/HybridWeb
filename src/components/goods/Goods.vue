@@ -19,9 +19,9 @@
      3.定义排序的方法，根据修改对应的规则来修改对应的排序
 
   -->
-  <div class="goods" :class="[layoutClass,{'goods-scroll':isScroll}]" :style="{height:goodsViewHeight}">
-      <div class="goods-item" :class="layoutItemClass" ref="goodsItem"
-      v-for="(item,index) in sortGoodsData" :key="index" :style="goodsItemStyles[index]">
+  <div class="goods" ref="goods" @scroll="onScrollChange" :class="[layoutClass,{'goods-scroll':isScroll}]" :style="{height:goodsViewHeight}">
+      <div class="goods-item" :class="layoutItemClass" ref="goodsItem" 
+      @click="onItemClick(item)" v-for="(item,index) in sortGoodsData" :key="index" :style="goodsItemStyles[index]">
         <!-- 图片 -->
         <img class="goods-item-img" :src="item.img" :style="imgStyles[index]" alt="">
         <!-- desc->description(描述) -->
@@ -105,10 +105,18 @@ export default {
             // 网格布局的展示形式-->goods-grid & goods-grid-item
             layoutClass:'goods-list',
             layoutItemClass:'goods-list-item',
+            // 滑动距离
+            scrollTopValue:0,
         }
     },
     created(){
         this.initData();
+    },
+    activated(){
+        /**
+         * 定位页面滑动位置
+         */
+        this.$refs.goods.scrollTop=this.scrollTopValue;
     },
     methods:{
         /**
@@ -161,7 +169,6 @@ export default {
              * 当参数(函数)返回值为正值，表示goods1排列在goods2之后
              * 接受的值为0的时候，表示排序不变
              */
-            console.log('1111',this.sortGoodsData)
             this.sortGoodsData.sort((goods1,goods2)=>{
                 // 根据传入的key获取对应的value
                 let v1=goods1[key],
@@ -296,6 +303,32 @@ export default {
 
             }
         },
+        /**
+         * 商品点击事件
+         */
+        onItemClick(item){
+            // 商品无库存不允许跳转
+            if(!item.isHave){
+                alert('该商品无库存');
+                return;
+            }
+            this.$router.push({
+                name:'goodsDetail',
+                params:{
+                    routerType:'push'
+                },
+                // 把传递的数据附加到我们的url上
+                query:{
+                    goodsId:item.id
+                }
+            })
+        },
+        /**
+         * 监听滑动事件
+         */
+        onScrollChange($event){
+            this.scrollTopValue=$event.target.scrollTop;
+        }
 
 
     },

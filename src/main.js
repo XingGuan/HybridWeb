@@ -5,6 +5,7 @@ import store from "./store";
 import "@js/htmlFontSize";
 import "@js/axios.config.js";
 import "@js/filter.js";
+import "@js/IsIphoneX.js";
 
 Vue.config.productionTip = false;
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="home" @scroll="onScrollChange">
+  <div class="home" @scroll="onScrollChange" ref="home">
     <navigation-bar :isShowBack="false" :navBarStyle="navBarStyle">
       <!-- 左侧插槽 -->
       <template v-slot:nav-left>
@@ -72,7 +72,7 @@ export default {
   data() {
     return {
       swiperData: [],
-      swiperheight: "184px",
+      swiperheight: this.$store.state.isIphoneX ? "228px":"184px",
       activityData: [],
       secondData:[],
       // navBar 插槽的样式数据，包含页面未开始滑动时插槽的样式(默认样式)，
@@ -123,6 +123,13 @@ export default {
   created() {
     this.navBarCurrentSlotStyle=this.navBarSlotStyle.normal;
     this.initData();
+  },
+  /**
+   * keepAlive组件被激活时调用
+   * 去为滑动模块指定滑动距离
+   */
+  activated(){
+    this.$refs.home.scrollTop=this.scrollTopValue;
   },
   methods: {
     //获取数据

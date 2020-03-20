@@ -19,6 +19,26 @@ const routes = [
     // vue-router 懒加载 ->GoodsList
     // chunkName->GoodsList.[hash].js
     component: () => import('../views/GoodsList.vue')
+  },
+  {
+    path: '/goodsDetail',
+    name: 'goodsDetail',
+    component: () => import('../views/GoodsDetail.vue')
+  },
+  {
+    path: '/buy',
+    name: 'buy',
+    component: () => import('../views/Buy.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Login.vue')
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/Register.vue')
   }
 ];
 
