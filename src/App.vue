@@ -78,7 +78,7 @@ export default {
   created(){
     this.$store.commit('setIsIphoneX',window.isIphoneX);
     // 指定Native主动调用方法
-    window.nativeFunctionUserLogin=this.nativeFunctionUserLogina();
+    window.nativeFunctionUserLogin=this.nativeFunctionUserLogin();
 
   },
   methods:{

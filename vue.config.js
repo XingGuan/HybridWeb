@@ -1,6 +1,8 @@
 // 拿到相对路径
 const path = require("path");
 module.exports = {
+  publicPath: process.env.NODE_ENV === 'production' ? '/my-app/' : '/', 
+  outputDir:'dist\\my-app',
   configureWebpack: config => {
     if (process.env.NODE_ENV === "production") {
       // 为生产环境修改配置...

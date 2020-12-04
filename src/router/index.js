@@ -41,7 +41,7 @@ const routes = [
     component: () => import('../views/Register.vue')
   }
 ];
-
+console.log('1111',process.env)
 const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
